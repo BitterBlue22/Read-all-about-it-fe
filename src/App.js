@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Users from "./components/Users";
+import Article from "./components/Article";
 
 class App extends Component {
   state = {
@@ -22,10 +23,13 @@ class App extends Component {
       <div>
         <Header user={this.state.user} />
         <NavBar />
-        <Router>
+        <Router className="Router">
           <Topics path="/topics" />
           <Articles path="/articles" />
+          <Article path="/articles/:article_id" />
+          <Articles path="/articles/:article_id/comments" />
           <Users path="/users" />
+          <Articles path="/:topic_slug" />
         </Router>
         <section>
           <h2 className="welcome-text">Welcome to NC news!</h2>
@@ -36,6 +40,7 @@ class App extends Component {
     );
   }
 }
+//
 
 export default App;
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ArticleCards from "./ArticleCards";
-import axios from "axios";
+import * as api from "../utils/api";
+import Loader from "./Loader";
 
 class Articles extends Component {
   state = {
@@ -8,6 +9,7 @@ class Articles extends Component {
     isLoading: true,
   };
   render() {
+    if (this.state.loading) return <Loader />;
     return (
       <div className="article-board">
         {this.state.articles.map((article) => {
@@ -17,15 +19,21 @@ class Articles extends Component {
     );
   }
   componentDidMount() {
-    this.fetchAllArticles();
+    const topic_slug = this.props.topic_slug;
+    this.getAllArticles(topic_slug);
   }
 
-  fetchAllArticles = () => {
-    axios
-      .get("https://tel-news-port.herokuapp.com/api/articles") //CORS error?
-      .then(({ data }) => {
-        this.setState({ articles: data.articles, isLoading: false });
-      });
+  componentDidUpdate(prevProps, prevState) {
+    const topic_slug = this.props.topic_slug;
+    if (prevProps.topic_slug !== this.props.topic_slug) {
+      this.getAllArticles(topic_slug);
+    }
+  }
+
+  getAllArticles = (topic) => {
+    api.fetchAllArticles(topic).then((articles) => {
+      this.setState({ articles, isLoading: false });
+    });
   };
 }
 

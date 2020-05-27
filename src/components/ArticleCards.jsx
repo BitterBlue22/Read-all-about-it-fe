@@ -1,16 +1,17 @@
 import React from "react";
-import AddComment from "./AddComment";
+import { Link } from "@reach/router";
 
-const ArticleCards = ({ article }) => {
-  //created_at
-  //votes
+const ArticleCards = ({
+  article: { article_id, author, votes, title, topic },
+}) => {
   return (
     <article className="article-card">
-      <h2>{article.title}</h2>
-      <p>{article.body}</p>
-      <h5>by {article.author}</h5>
-
-      <AddComment />
+      <h2>{title}</h2>
+      <h5>
+        by {author}, votes: {votes}
+      </h5>
+      <h4>Topic: {topic}</h4>
+      <Link to={`/articles/${article_id}`}>Read</Link>
     </article>
   );
 };

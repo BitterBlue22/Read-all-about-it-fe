@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
+import * as api from "../utils/api";
 import TopicCards from "./TopicCards";
 import AddTopic from "./AddTopic";
+import Loader from "./Loader";
 
 class Topics extends Component {
   state = {
@@ -10,7 +11,7 @@ class Topics extends Component {
   };
 
   render() {
-    if (this.state.loading) return <p>Loading...</p>;
+    if (this.state.loading) return <Loader />;
     return (
       <div className="topic-board">
         <AddTopic />
@@ -21,15 +22,13 @@ class Topics extends Component {
     );
   }
   componentDidMount() {
-    this.fetchAllTopics();
+    this.getAllTopics();
   }
 
-  fetchAllTopics = () => {
-    axios
-      .get("https://tel-news-port.herokuapp.com/api/topics") //CORS error?
-      .then(({ data }) => {
-        this.setState({ topics: data.topics, isLoading: false });
-      });
+  getAllTopics = () => {
+    api.fetchAllTopics().then((topics) => {
+      this.setState({ topics, isLoading: false });
+    });
   };
 }
 

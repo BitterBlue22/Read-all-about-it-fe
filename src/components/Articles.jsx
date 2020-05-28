@@ -4,6 +4,7 @@ import * as api from "../utils/api";
 import Loader from "./Loader";
 import ErrorDisplay from "./ErrorDisplay";
 import Sorter from "./Sorter";
+import AddArticle from "./AddArticle";
 
 class Articles extends Component {
   state = {
@@ -19,6 +20,7 @@ class Articles extends Component {
     return (
       <div className="article-board">
         <Sorter handleSort={this.handleSort} />
+        <AddArticle addArticleToState={this.addArticleToState} />
         {this.state.articles.map((article) => {
           return <ArticleCards key={article.article_id} article={article} />;
         })}
@@ -34,10 +36,7 @@ class Articles extends Component {
   componentDidUpdate(prevProps, prevState) {
     const topic_slug = this.props.topic_slug;
     const sort_by = this.state.sort_by;
-    if (
-      prevProps.topic_slug !== this.props.topic_slug ||
-      prevProps.sort_by !== this.state.sort_by
-    ) {
+    if (prevProps.topic_slug !== topic_slug || prevProps.sort_by !== sort_by) {
       this.getAllArticles(topic_slug, sort_by);
     }
   }
@@ -54,6 +53,13 @@ class Articles extends Component {
   };
   handleSort = (sort_by) => {
     this.setState({ sort_by: sort_by });
+  };
+  addArticleToState = (newArticle) => {
+    this.setState((currentState) => {
+      return {
+        articles: [newArticle, ...currentState.articles],
+      };
+    });
   };
 }
 

@@ -7,10 +7,10 @@ export const fetchAllTopics = () => {
   });
 };
 
-export const fetchAllArticles = (topic) => {
+export const fetchAllArticles = (topic, sort_by) => {
   return axios
     .get(`${base_url}/articles`, {
-      params: { topic },
+      params: { topic, sort_by },
     })
     .then(({ data: { articles } }) => {
       return articles;
@@ -23,9 +23,9 @@ export const fetchAllUsers = () => {
   });
 };
 
-export const patchVotes = (article_id) => {
+export const patchVotes = (article_id, increment) => {
   return axios.patch(`${base_url}/articles/${article_id}`, {
-    inc_votes: 1,
+    inc_votes: increment,
   });
 };
 
@@ -51,4 +51,12 @@ export const postCommentByArticleId = (article_id, newComment) => {
 
 export const deleteCommentById = (comment_id) => {
   return axios.delete(`${base_url}/comments/${comment_id}`);
+};
+
+export const postNewTopic = (newTopic) => {
+  return axios.post(`${base_url}/topics`, newTopic);
+};
+
+export const postNewArticleToTopic = (topic_slug, newArticle) => {
+  return axios.post(`${base_url}/topics/articles`, newArticle);
 };

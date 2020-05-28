@@ -48,3 +48,7 @@ export const fetchAllComments = (article_id) => {
 export const postCommentByArticleId = (article_id, newComment) => {
   return axios.post(`${base_url}/articles/${article_id}/comments`, newComment);
 };
+
+export const deleteCommentById = (comment_id) => {
+  return axios.delete(`${base_url}/comments/${comment_id}`);
+};

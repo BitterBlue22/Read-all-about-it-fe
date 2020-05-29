@@ -23,8 +23,8 @@ export const fetchAllUsers = () => {
   });
 };
 
-export const patchVotes = (article_id, increment) => {
-  return axios.patch(`${base_url}/articles/${article_id}`, {
+export const patchVotes = (id, increment, endpoint) => {
+  return axios.patch(`${base_url}/${endpoint}/${id}`, {
     inc_votes: increment,
   });
 };

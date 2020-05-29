@@ -7,6 +7,7 @@ class VoteUpdater extends Component {
   };
   handleVoteUpdate = (event) => {
     const { id } = event.target;
+
     let vote = 0;
 
     if (id === "upvote") vote++;
@@ -41,18 +42,21 @@ class VoteUpdater extends Component {
     return (
       <section className="vote-updater">
         <p>Votes: {votes + userVotes}</p>
-        <button onClick={this.handleVoteUpdate}>
+        <button
+          onClick={this.handleVoteUpdate}
+          disabled={this.state.userVotes !== 0}
+          id="upvote"
+        >
           <span role="img" aria-label="upvote" id="upvote">
             ⬆️
           </span>
         </button>
-        <button onClick={this.handleVoteUpdate}>
-          <span
-            role="img"
-            aria-label="downvote"
-            id="downvote"
-            disabled={userVotes === -1}
-          >
+        <button
+          onClick={this.handleVoteUpdate}
+          id="downvote"
+          disabled={this.state.userVotes === -1}
+        >
+          <span role="img" aria-label="downvote" id="downvote">
             ⬇️
           </span>
         </button>

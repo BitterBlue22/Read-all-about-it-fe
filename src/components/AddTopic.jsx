@@ -8,7 +8,7 @@ class AddTopic extends Component {
   };
   render() {
     return (
-      <form className="new-topic-form" onSubmit={this.addNewTopic}>
+      <form className="topic-form" onSubmit={this.addNewTopic}>
         <label>New Topic:</label>
         <input type="text" name="slug" onChange={this.handleInputChange} />
         <label>description:</label>

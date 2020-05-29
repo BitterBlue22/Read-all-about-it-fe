@@ -6,9 +6,10 @@ const Sorter = ({ handleSort }) => {
   };
 
   return (
-    <section>
+    <section className="sorter">
       <label htmlFor="query">Sort by: </label>
-      <select onChange={handleChange}>
+      <select onChange={handleChange} className="selector">
+        <option></option>
         <option name="created_at">created_at</option>
         <option name="votes">votes</option>
         <option name="comment_count">comment_count</option>

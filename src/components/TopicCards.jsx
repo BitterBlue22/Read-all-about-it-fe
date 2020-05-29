@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TopicCards = ({ topic: { slug, description } }) => {
   return (
-    <div className="topic-card">
-      <h2>Topic: {slug}</h2>
+    <article className="topic-card">
+      <h2>
+        <FontAwesomeIcon icon="boxes" /> {slug}
+      </h2>
       <span>{description}</span>
-      <br />
-      <Link to={`/${slug}`}> Articles posted under this topic</Link>
-      <br />
-      <button>Post to this topic</button>
-    </div>
+      <Link to={`/${slug}`}>
+        <FontAwesomeIcon icon="newspaper" /> Articles
+      </Link>
+    </article>
   );
 };
 

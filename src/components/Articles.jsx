@@ -20,7 +20,10 @@ class Articles extends Component {
     return (
       <div className="article-board">
         <Sorter handleSort={this.handleSort} />
-        <AddArticle addArticleToState={this.addArticleToState} />
+        <AddArticle
+          addArticleToState={this.addArticleToState}
+          user={this.props.user}
+        />
         {this.state.articles.map((article) => {
           return <ArticleCards key={article.article_id} article={article} />;
         })}

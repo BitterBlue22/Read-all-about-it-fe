@@ -17,23 +17,17 @@ class Topics extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <div className="topic-board">
+      <section className="topic-board">
         <AddTopic addTopicToState={this.addTopicToState} />
         {this.state.topics.map((topic) => {
           return <TopicCards key={topic.slug} topic={topic} />;
         })}
-      </div>
+      </section>
     );
   }
   componentDidMount() {
     this.getAllTopics();
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState !== this.state) {
-  //     this.getAllTopics();
-  //   }
-  // }
 
   getAllTopics = () => {
     api

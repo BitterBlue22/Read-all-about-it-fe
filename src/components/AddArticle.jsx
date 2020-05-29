@@ -5,7 +5,7 @@ class AddArticle extends Component {
   state = {
     title: "",
     body: "",
-    author: "",
+    author: "weegembump",
     created_at: "",
     comment_count: 0,
     votes: 0,
@@ -19,21 +19,21 @@ class AddArticle extends Component {
         <label htmlFor="article-input-box">Topic: </label>
         <input
           type="text"
-          className="article-input-box"
+          className="article-input-box-small"
           onChange={this.handleInputChange}
           name="topic"
         />
         <label htmlFor="article-input-box">Title: </label>
         <input
           type="text"
-          className="article-input-box"
+          className="article-input-box-small"
           onChange={this.handleInputChange}
           name="title"
         />
-        <label htmlFor="article-input-box">Article: </label>
+        <label htmlFor="article-input-box-big">Article: </label>
         <input
           type="text"
-          className="article-input-box"
+          className="article-input-box-big"
           onChange={this.handleInputChange}
           name="body"
         />
@@ -44,8 +44,10 @@ class AddArticle extends Component {
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
+    const { user } = this.props;
     this.setState({
       [name]: value,
+      author: user,
     });
   };
 

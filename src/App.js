@@ -42,9 +42,9 @@ class App extends Component {
         <Header user={this.state.user} />
         <NavBar />
         <Router className="Router">
-          <Topics path="/topics" />
-          <Articles path="/articles" />
-          <Articles path="topics/articles" />
+          <Topics path="/topics" user={this.state.user.username} />
+          <Articles path="/articles" user={this.state.user.username} />
+          <Articles path="topics/articles" user={this.state.user.username} />
           <Article
             path="/articles/:article_id"
             user={this.state.user.username}

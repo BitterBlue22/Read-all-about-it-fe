@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const CommentCards = ({
   removeComment,
   user,
-  comment: { body, author, votes, created_at, article_id, comment_id },
+  comment: { body, author, votes, created_at, comment_id },
 }) => {
   return (
     <article className="comment-card">

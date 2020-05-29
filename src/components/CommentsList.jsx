@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import CommentCards from "./CommentCards";
 import AddComment from "./AddComment";
+import ErrorDisplay from "./ErrorDisplay";
+import Loader from "./Loader";
 
 class CommentsList extends Component {
   state = {
     comments: [],
+    isLoading: true,
+    err: "",
   };
   render() {
     const { user } = this.props;
+    const { isLoading, err } = this.state;
+    if (err) return <ErrorDisplay msg={err} />;
+    if (isLoading) return <Loader />;
     return (
       <div className="comment-list">
         {this.state.comments.map((comment) => {
@@ -35,13 +42,6 @@ class CommentsList extends Component {
     this.getAllComments(article_id);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const article_id = this.props.article_id;
-  //   if (prevProps.comments !== this.state.comments) {
-  //     this.getAllComments(article_id);
-  //   }
-  // }
-
   addCommentToState = (newComment) => {
     this.setState((currentState) => {
       return {
@@ -58,9 +58,14 @@ class CommentsList extends Component {
   };
 
   getAllComments = (article_id) => {
-    api.fetchAllComments(article_id).then((comments) => {
-      this.setState({ comments: comments });
-    });
+    api
+      .fetchAllComments(article_id)
+      .then((comments) => {
+        this.setState({ comments: comments, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({ err: err.response.data.msg, isLoading: false });
+      });
   };
 }
 

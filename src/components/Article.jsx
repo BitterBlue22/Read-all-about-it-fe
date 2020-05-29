@@ -1,18 +1,22 @@
 import React, { Component } from "react";
-import AddComment from "./AddComment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VoteUpdater from "./VoteUpdater";
 import CommentsList from "./CommentsList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import ErrorDisplay from "./ErrorDisplay";
 
 class Article extends Component {
   state = {
     article: {},
     isLoading: true,
+    err: "",
   };
 
   render() {
-    if (this.state.loading) return <Loader />;
+    const { isLoading, err } = this.state;
+    if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplay msg={err} />;
     const {
       title,
       topic,
@@ -22,25 +26,31 @@ class Article extends Component {
       votes,
       article_id,
     } = this.state.article;
-    return (
-      <article>
-        <h2>{title}</h2>
-        <h4>Topic: {topic}</h4>
-        <p>{body}</p>
-        <h5>
-          created at {created_at} by {author},{" "}
-          <VoteUpdater article_id={article_id} votes={votes} />
-        </h5>
 
-        <AddComment />
-        <CommentsList article_id={this.props.article_id} />
+    return (
+      <article className="full-article">
+        <section className="full-article-body">
+          <h2>{title}</h2>
+          <h4>Topic: {topic}</h4>
+          <p>{body}</p>
+          <h5>
+            created at <FontAwesomeIcon icon="clock" />
+            {created_at} by <FontAwesomeIcon icon="user" />
+            {author}, <VoteUpdater article_id={article_id} votes={votes} />
+          </h5>
+        </section>
+
+        <CommentsList
+          article_id={this.props.article_id}
+          user={this.props.user}
+        />
       </article>
     );
   }
 
   componentDidMount() {
     const article_id = this.props.article_id;
-    console.log(article_id);
+
     this.getArticleById(article_id);
   }
 
@@ -52,9 +62,14 @@ class Article extends Component {
   }
 
   getArticleById = (article_id) => {
-    api.fetchArticleById(article_id).then((article) => {
-      this.setState({ article: article });
-    });
+    api
+      .fetchArticleById(article_id)
+      .then((article) => {
+        this.setState({ article: article, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({ err: err.response.data.msg, isLoading: false });
+      });
   };
 }
 

@@ -1,16 +1,33 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ArticleCards = ({
-  article: { article_id, author, votes, title, topic },
+  article: {
+    article_id,
+    author,
+    votes,
+    title,
+    topic,
+    comment_count,
+    created_at,
+  },
 }) => {
   return (
     <article className="article-card">
       <h2>{title}</h2>
       <h5>
-        by {author}, votes: {votes}
+        by <FontAwesomeIcon icon="user" />
+        {author}, votes: {votes}
       </h5>
-      <h4>Topic: {topic}</h4>
+      <h5>
+        {" "}
+        <FontAwesomeIcon icon="comments" />
+        comments: {comment_count}
+      </h5>
+      <FontAwesomeIcon icon="clock" />
+      {created_at}
+      <h6>Topic: {topic}</h6>
       <Link to={`/articles/${article_id}`}>Read</Link>
     </article>
   );

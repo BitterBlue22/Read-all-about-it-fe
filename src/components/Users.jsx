@@ -9,7 +9,8 @@ class Users extends Component {
     isLoading: true,
   };
   render() {
-    if (this.state.loading) return <Loader />;
+    const { isLoading } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <div className="members-area">
         {this.state.users.map((user) => {

@@ -7,28 +7,21 @@ class VoteUpdater extends Component {
   };
   handleVoteUpdate = (event) => {
     const { id } = event.target;
-    if (id === "upvote") {
-      this.setState(({ userVotes }) => {
-        return {
-          userVotes: userVotes + 1,
-        };
-      });
-    } else if (id === "downvote") {
-      this.setState(({ userVotes }) => {
-        return {
-          userVotes: userVotes - 1,
-        };
-      });
-    }
+    let vote = 0;
 
-    const { article_id } = this.props;
-    let increment = 0;
-    if (id === "upvote") {
-      increment = 1;
-    } else if (id === "downvote") {
-      increment = -1;
-    }
-    api.patchVotes(article_id, increment).catch((err) => {
+    if (id === "upvote") vote++;
+    if (id === "downvote") vote--;
+
+    this.setState(({ userVotes }) => {
+      return {
+        userVotes: userVotes + vote,
+      };
+    });
+
+    const { article_id, comment_id } = this.props;
+    const target_id = article_id ? article_id : comment_id;
+    const endPoint = article_id ? "articles" : "comments";
+    api.patchVotes(target_id, vote, endPoint).catch((err) => {
       if (id === "upvote") {
         this.setState(({ userVotes }) => {
           return {
@@ -46,7 +39,7 @@ class VoteUpdater extends Component {
     const { userVotes } = this.state;
     const { votes } = this.props;
     return (
-      <div>
+      <section className="vote-updater">
         <p>Votes: {votes + userVotes}</p>
         <button onClick={this.handleVoteUpdate}>
           <span role="img" aria-label="upvote" id="upvote">
@@ -63,7 +56,7 @@ class VoteUpdater extends Component {
             ⬇️
           </span>
         </button>
-      </div>
+      </section>
     );
   }
 }

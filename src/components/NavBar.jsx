@@ -1,34 +1,52 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+
+const StyledNav = styled.nav`
+  background-color: #501f3a;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+`;
+const StyledNavButton = styled.div`
+  font-family: "Permanent Marker", cursive;
+  padding: 20px;
+  color: white;
+  &:hover {
+    background-color: #14a098;
+  }
+`;
 
 const NavBar = () => {
   return (
-    <nav className="main-nav-bar">
-      <Link to="/" className="nav-link">
-        <h2>
+    <StyledNav>
+      <Link to="/" className="link">
+        <StyledNavButton>
           <FontAwesomeIcon icon="home" />
           Home
-        </h2>
+        </StyledNavButton>
       </Link>
-      <Link to="/topics" className="nav-link">
-        <h2>
+      <Link to="/topics" className="link">
+        <StyledNavButton>
           <FontAwesomeIcon icon="boxes" />
           Topics
-        </h2>
+        </StyledNavButton>
       </Link>
-      <Link to="/articles" className="nav-link">
-        <h2>
+      <Link to="/articles" className="link">
+        <StyledNavButton>
           <FontAwesomeIcon icon="newspaper" /> Articles
-        </h2>
+        </StyledNavButton>
       </Link>
-      <Link to="/users" className="nav-link">
-        <h2>
+      <Link to="/users" className="link">
+        <StyledNavButton>
           <FontAwesomeIcon icon="users" />
           Member's Area
-        </h2>
+        </StyledNavButton>
       </Link>
-    </nav>
+    </StyledNav>
   );
 };
 

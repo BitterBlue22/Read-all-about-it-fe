@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteComment from "./DeleteComment";
-import VoteUpdater from "./VoteUpdater";
+import VoteUpdater from "../Reusable/VoteUpdater";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CommentCards = ({

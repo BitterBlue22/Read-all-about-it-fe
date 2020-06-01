@@ -46,6 +46,7 @@ export const fetchAllComments = (article_id) => {
 };
 
 export const postCommentByArticleId = (article_id, newComment) => {
+  console.log(article_id);
   return axios.post(`${base_url}/articles/${article_id}/comments`, newComment);
 };
 

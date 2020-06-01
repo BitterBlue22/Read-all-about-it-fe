@@ -13,7 +13,10 @@ const StyledArticle = styled.article`
   margin: 5px;
   background-color: white;
   font-family: "Montserrat", sans-serif;
-  position: relative;
+  &:hover {
+    background-color: #cccccc;
+    transition: all 500ms ease;
+  }
 `;
 
 const StyledCard = ({ children }) => {

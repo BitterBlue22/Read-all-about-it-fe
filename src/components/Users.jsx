@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import UserProfile from "./UserProfile";
 import * as api from "../utils/api";
-import Loader from "./Loader";
+import Loader from "./Reusable/Loader";
 import Board from "./StyledComponents/Board";
 
 class Users extends Component {

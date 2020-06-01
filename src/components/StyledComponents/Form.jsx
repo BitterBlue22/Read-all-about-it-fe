@@ -17,8 +17,12 @@ const StyledForm = styled.form`
   font-family: "Montserrat", sans-serif;
 `;
 
-const Form = ({ children }) => {
-  return <StyledForm>{children}</StyledForm>;
+const Form = ({ name, onSubmit, children }) => {
+  return (
+    <StyledForm name={name} onSubmit={onSubmit}>
+      {children}
+    </StyledForm>
+  );
 };
 
 export default Form;

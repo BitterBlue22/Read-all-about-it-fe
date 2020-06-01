@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
+import * as api from "../../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ErrorDisplay from "./ErrorDisplay";
-import InputBox from "./StyledComponents/InputBox";
-import Button from "./StyledComponents/Button";
-import Form from "./StyledComponents/Form";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import InputBox from "../StyledComponents/InputBox";
+import Button from "../StyledComponents/Button";
+import Form from "../StyledComponents/Form";
 
 class AddComment extends Component {
   state = {

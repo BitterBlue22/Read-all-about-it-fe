@@ -12,10 +12,15 @@ const StyledButton = styled.button`
   align-items: center;
   border-radius: 5px;
   font-family: "Montserrat", sans-serif;
+
+  &:hover {
+    left: 7px;
+    background-color: #cb2d6f;
+  }
 `;
 
-const Button = ({ children }) => {
-  return <StyledButton>{children}</StyledButton>;
+const Button = ({ onClick, children }) => {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 export default Button;

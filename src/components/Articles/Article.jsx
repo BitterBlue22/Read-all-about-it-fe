@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VoteUpdater from "./VoteUpdater";
-import CommentsList from "./CommentsList";
-import * as api from "../utils/api";
-import Loader from "./Loader";
-import ErrorDisplay from "./ErrorDisplay";
-import Board from "./StyledComponents/Board";
+import VoteUpdater from "../Reusable/VoteUpdater";
+import CommentsList from "../Comments/CommentsList";
+import * as api from "../../utils/api";
+import Loader from "../Reusable/Loader";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import Board from "../StyledComponents/Board";
 
 class Article extends Component {
   state = {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
+import * as api from "../../utils/api";
 import TopicCards from "./TopicCards";
 import AddTopic from "./AddTopic";
-import Loader from "./Loader";
-import ErrorDisplay from "./ErrorDisplay";
-import Board from "./StyledComponents/Board";
+import Loader from "../Reusable/Loader";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import Board from "../StyledComponents/Board";
 
 class Topics extends Component {
   state = {

@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import Button from "./StyledComponents/Button";
-import HeadingGeneral from "./StyledComponents/HeadingGeneral";
-import StyledCard from "./StyledComponents/StyledCard";
+import Button from "../StyledComponents/Button";
+import HeadingGeneral from "../StyledComponents/HeadingGeneral";
+import StyledCard from "../StyledComponents/StyledCard";
 
 const TopicCards = ({ topic: { slug, description } }) => {
   return (

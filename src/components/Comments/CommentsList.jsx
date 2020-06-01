@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
+import * as api from "../../utils/api";
 import CommentCards from "./CommentCards";
 import AddComment from "./AddComment";
-import ErrorDisplay from "./ErrorDisplay";
-import Loader from "./Loader";
-import Board from "./StyledComponents/Board";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import Loader from "../Reusable/Loader";
+import Board from "../StyledComponents/Board";
 
 class CommentsList extends Component {
   state = {

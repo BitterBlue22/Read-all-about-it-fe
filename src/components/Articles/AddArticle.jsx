@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
-import ErrorDisplay from "./ErrorDisplay";
-import InputBox from "./StyledComponents/InputBox";
-import Button from "./StyledComponents/Button";
-import Form from "./StyledComponents/Form";
+import * as api from "../../utils/api";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import InputBox from "../StyledComponents/InputBox";
+import Button from "../StyledComponents/Button";
+import Form from "../StyledComponents/Form";
 
 class AddArticle extends Component {
   state = {

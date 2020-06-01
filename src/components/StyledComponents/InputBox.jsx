@@ -10,8 +10,8 @@ const StyledInput = styled.input`
   font-family: "Montserrat", sans-serif;
 `;
 
-const InputBox = ({ required, name }) => {
-  return <StyledInput required={required} name={name} />;
+const InputBox = ({ required, name, onChange }) => {
+  return <StyledInput required={required} name={name} onChange={onChange} />;
 };
 
 export default InputBox;

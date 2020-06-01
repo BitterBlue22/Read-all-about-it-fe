@@ -1,14 +1,13 @@
 import "./App.css";
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import Header from "./components/Header";
-import NavBar from "./components/NavBar";
-
-import Topics from "./components/Topics";
-import Articles from "./components/Articles";
+import Header from "./components/Reusable/Header";
+import NavBar from "./components/Reusable/NavBar";
+import Topics from "./components/Topics/Topics";
+import Articles from "./components/Articles/Articles";
 import Users from "./components/Users";
-import Article from "./components/Article";
-import CommentsList from "./components/CommentsList";
+import Article from "./components/Articles/Article";
+import CommentsList from "./components/Comments/CommentsList";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import styled from "styled-components";
 
@@ -27,8 +26,8 @@ import {
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
-import Home from "./components/Home";
-import ErrorDisplay from "./components/ErrorDisplay";
+import Home from "./components/Reusable/Home";
+import ErrorDisplay from "./components/Reusable/ErrorDisplay";
 import MainWrapper from "./components/StyledComponents/MainWrapper";
 
 class App extends Component {

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ArticleCards from "./ArticleCards";
-import * as api from "../utils/api";
-import Loader from "./Loader";
-import ErrorDisplay from "./ErrorDisplay";
-import Sorter from "./Sorter";
+import * as api from "../../utils/api";
+import Loader from "../Reusable/Loader";
+import ErrorDisplay from "../Reusable/ErrorDisplay";
+import Sorter from "../Reusable/Sorter";
 import AddArticle from "./AddArticle";
-import Board from "./StyledComponents/Board";
+import Board from "../StyledComponents/Board";
 
 class Articles extends Component {
   state = {

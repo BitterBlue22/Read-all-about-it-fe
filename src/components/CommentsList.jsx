@@ -4,6 +4,7 @@ import CommentCards from "./CommentCards";
 import AddComment from "./AddComment";
 import ErrorDisplay from "./ErrorDisplay";
 import Loader from "./Loader";
+import Board from "./StyledComponents/Board";
 
 class CommentsList extends Component {
   state = {
@@ -17,7 +18,7 @@ class CommentsList extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <div className="comment-list">
+      <Board>
         {this.state.comments.map((comment) => {
           return (
             <CommentCards
@@ -33,7 +34,7 @@ class CommentsList extends Component {
           addCommentToState={this.addCommentToState}
           user={user}
         />
-      </div>
+      </Board>
     );
   }
 

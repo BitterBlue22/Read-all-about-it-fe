@@ -7,11 +7,14 @@ const StyledForm = styled.form`
   justify-content: space-around;
   align-items: center;
   background-color: white;
+  color: #black;
   border-style: ridge;
   border: 5px;
-  border-color: black;
+  border-radius: 6px;
+  border-color: cb2d6f;
   padding: 10px;
   margin: 10px;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const Form = ({ children }) => {

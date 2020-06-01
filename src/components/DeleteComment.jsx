@@ -1,6 +1,7 @@
 import React from "react";
 import * as api from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "./StyledComponents/Button";
 
 const DeleteComment = ({ comment_id, removeComment }) => {
   const removeCommentById = () => {
@@ -8,10 +9,10 @@ const DeleteComment = ({ comment_id, removeComment }) => {
     api.deleteCommentById(comment_id);
   };
   return (
-    <button onClick={removeCommentById}>
+    <Button onClick={removeCommentById}>
       <FontAwesomeIcon icon="trash" />
       Delete
-    </button>
+    </Button>
   );
 };
 

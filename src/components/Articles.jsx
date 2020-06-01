@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import ErrorDisplay from "./ErrorDisplay";
 import Sorter from "./Sorter";
 import AddArticle from "./AddArticle";
+import Board from "./StyledComponents/Board";
 
 class Articles extends Component {
   state = {
@@ -18,16 +19,19 @@ class Articles extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrorDisplay msg={err} />;
     return (
-      <div className="article-board">
+      <>
         <Sorter handleSort={this.handleSort} />
         <AddArticle
           addArticleToState={this.addArticleToState}
           user={this.props.user}
         />
-        {this.state.articles.map((article) => {
-          return <ArticleCards key={article.article_id} article={article} />;
-        })}
-      </div>
+
+        <Board>
+          {this.state.articles.map((article) => {
+            return <ArticleCards key={article.article_id} article={article} />;
+          })}
+        </Board>
+      </>
     );
   }
   componentDidMount() {
@@ -39,7 +43,8 @@ class Articles extends Component {
   componentDidUpdate(prevProps, prevState) {
     const topic_slug = this.props.topic_slug;
     const sort_by = this.state.sort_by;
-    if (prevProps.topic_slug !== topic_slug || prevProps.sort_by !== sort_by) {
+
+    if (prevProps.topic_slug !== topic_slug || prevState.sort_by !== sort_by) {
       this.getAllArticles(topic_slug, sort_by);
     }
   }

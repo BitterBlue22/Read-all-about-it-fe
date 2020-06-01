@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserProfile from "./UserProfile";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import Board from "./StyledComponents/Board";
 
 class Users extends Component {
   state = {
@@ -12,11 +13,11 @@ class Users extends Component {
     const { isLoading } = this.state;
     if (isLoading) return <Loader />;
     return (
-      <div className="members-area">
+      <Board>
         {this.state.users.map((user) => {
           return <UserProfile key={user.username} user={user} />;
         })}
-      </div>
+      </Board>
     );
   }
   componentDidMount() {

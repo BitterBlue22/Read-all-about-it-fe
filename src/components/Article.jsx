@@ -5,6 +5,7 @@ import CommentsList from "./CommentsList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import ErrorDisplay from "./ErrorDisplay";
+import Board from "./StyledComponents/Board";
 
 class Article extends Component {
   state = {
@@ -28,7 +29,7 @@ class Article extends Component {
     } = this.state.article;
 
     return (
-      <article className="full-article">
+      <Board>
         <section className="full-article-body">
           <h2>{title}</h2>
           <h4>Topic: {topic}</h4>
@@ -44,7 +45,7 @@ class Article extends Component {
           article_id={this.props.article_id}
           user={this.props.user}
         />
-      </article>
+      </Board>
     );
   }
 

@@ -1,24 +1,39 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import ErrorDisplay from "./ErrorDisplay";
+import Button from "./StyledComponents/Button";
+import InputBox from "./StyledComponents/InputBox";
+import Form from "./StyledComponents/Form";
 
 class AddTopic extends Component {
   state = {
     slug: "",
     description: "",
+
+    err: "",
   };
   render() {
+    const { err } = this.state;
+
+    if (err) return <ErrorDisplay msg={err} />;
     return (
-      <form className="topic-form" onSubmit={this.addNewTopic}>
+      <Form className="topic-form" onSubmit={this.addNewTopic}>
         <label>New Topic:</label>
-        <input type="text" name="slug" onChange={this.handleInputChange} />
-        <label>description:</label>
-        <input
+        <InputBox
+          type="text"
+          name="slug"
+          onChange={this.handleInputChange}
+          required
+        />
+        <label>Description:</label>
+        <InputBox
           type="text"
           name="description"
           onChange={this.handleInputChange}
+          required
         />
-        <button>Submit</button>
-      </form>
+        <Button>Post</Button>
+      </Form>
     );
   }
 
@@ -32,7 +47,9 @@ class AddTopic extends Component {
   addNewTopic = (event) => {
     event.preventDefault();
     const newTopic = this.state;
-    api.postNewTopic(newTopic);
+    api
+      .postNewTopic(newTopic)
+      .catch((err) => this.setState({ err: err.response.data.msg }));
     this.props.addTopicToState(newTopic);
   };
 }

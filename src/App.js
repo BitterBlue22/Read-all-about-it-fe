@@ -3,13 +3,14 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+
 import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import Users from "./components/Users";
 import Article from "./components/Article";
 import CommentsList from "./components/CommentsList";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import styled from "styled-components";
 
 import {
   faCheckSquare,
@@ -26,6 +27,9 @@ import {
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
+import Home from "./components/Home";
+import ErrorDisplay from "./components/ErrorDisplay";
+import MainWrapper from "./components/StyledComponents/MainWrapper";
 
 class App extends Component {
   state = {
@@ -36,32 +40,43 @@ class App extends Component {
     },
     users: [],
   };
+
   render() {
+    const Container = styled.div`
+      background-color: transparent;
+      margin: 0;
+      overflow: scroll;
+      height: 100%;
+      position: fixed;
+      min-height: 100%;
+      width: 100%;
+      flex-wrap: wrap;
+    `;
     return (
-      <div>
+      <Container>
         <Header user={this.state.user} />
+
         <NavBar />
-        <Router className="Router">
-          <Topics path="/topics" user={this.state.user.username} />
-          <Articles path="/articles" user={this.state.user.username} />
-          <Articles path="topics/articles" user={this.state.user.username} />
-          <Article
-            path="/articles/:article_id"
-            user={this.state.user.username}
-          />
-          <Articles path="/articles/:article_id/comments" />
-          <Users path="/users" />
-          <Articles path="/:topic_slug" />
-          <CommentsList
-            path="/comments/:comment_id"
-            user={this.state.user.username}
-          />
-        </Router>
-        <section>
-          <h2 className="welcome-text">Welcome to NC news!</h2>
-        </section>
-        <Footer />
-      </div>
+        <MainWrapper>
+          <Router className="Router">
+            <Home path="/" />
+            <Topics path="/topics" user={this.state.user.username} />
+            <Articles path="/articles" user={this.state.user.username} />
+            <Article
+              path="/articles/:article_id"
+              user={this.state.user.username}
+            />
+            <Articles path="/articles/:article_id/comments" />
+            <Users path="/users" />
+            <Articles path="/:topic_slug" />
+            <CommentsList
+              path="/comments/:comment_id"
+              user={this.state.user.username}
+            />
+            <ErrorDisplay default />
+          </Router>
+        </MainWrapper>
+      </Container>
     );
   }
 }

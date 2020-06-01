@@ -23,17 +23,16 @@ class VoteUpdater extends Component {
     const target_id = article_id ? article_id : comment_id;
     const endPoint = article_id ? "articles" : "comments";
     api.patchVotes(target_id, vote, endPoint).catch((err) => {
-      if (id === "upvote") {
-        this.setState(({ userVotes }) => {
-          return {
-            userVotes: userVotes - 1,
-          };
-        });
-      } else if (id === "downvote") {
-        this.setState(({ userVotes }) => {
-          return { userVotes: userVotes + 1 };
-        });
-      }
+      let vote = 0;
+
+      if (id === "upvote") vote++;
+      if (id === "downvote") vote--;
+
+      this.setState(({ userVotes }) => {
+        return {
+          userVotes: userVotes + vote,
+        };
+      });
     });
   };
   render() {
@@ -44,7 +43,7 @@ class VoteUpdater extends Component {
         <p>Votes: {votes + userVotes}</p>
         <button
           onClick={this.handleVoteUpdate}
-          disabled={this.state.userVotes !== 0}
+          disabled={this.state.userVotes > 0}
           id="upvote"
         >
           <span role="img" aria-label="upvote" id="upvote">
@@ -54,7 +53,7 @@ class VoteUpdater extends Component {
         <button
           onClick={this.handleVoteUpdate}
           id="downvote"
-          disabled={this.state.userVotes === -1}
+          disabled={this.state.userVotes < 0}
         >
           <span role="img" aria-label="downvote" id="downvote">
             ⬇️

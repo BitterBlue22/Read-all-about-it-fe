@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledGeneralHeading = styled.h2`
   font-family: "Permanent Marker", cursive;
-  color: #cccccc;
+  color: #cb2d6f;
 `;
 const HeadingGeneral = ({ children }) => {
   return <StyledGeneralHeading>{children}</StyledGeneralHeading>;

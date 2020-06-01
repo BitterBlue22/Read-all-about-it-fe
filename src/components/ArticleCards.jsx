@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "./StyledComponents/Button";
+import HeadingGeneral from "./StyledComponents/HeadingGeneral";
+import StyledCard from "./StyledComponents/StyledCard";
 
 const ArticleCards = ({
   article: {
@@ -14,8 +17,8 @@ const ArticleCards = ({
   },
 }) => {
   return (
-    <article className="article-card">
-      <h2>{title}</h2>
+    <StyledCard className="article-card">
+      <HeadingGeneral>{title}</HeadingGeneral>
       <h5>
         by <FontAwesomeIcon icon="user" />
         {author}, votes: {votes}
@@ -28,8 +31,10 @@ const ArticleCards = ({
       <FontAwesomeIcon icon="clock" />
       {created_at}
       <h6>Topic: {topic}</h6>
-      <Link to={`/articles/${article_id}`}>Read</Link>
-    </article>
+      <Link to={`/articles/${article_id}`} className="link">
+        <Button>Read</Button>
+      </Link>
+    </StyledCard>
   );
 };
 

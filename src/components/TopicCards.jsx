@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Button from "./StyledComponents/Button";
+import HeadingGeneral from "./StyledComponents/HeadingGeneral";
+import StyledCard from "./StyledComponents/StyledCard";
+
 const TopicCards = ({ topic: { slug, description } }) => {
   return (
-    <article className="topic-card">
-      <h2>
-        <FontAwesomeIcon icon="boxes" /> {slug}
-      </h2>
+    <StyledCard className="topic-card">
+      <HeadingGeneral>{slug}</HeadingGeneral>
       <span>{description}</span>
-      <Link to={`/${slug}`}>
-        <FontAwesomeIcon icon="newspaper" /> Articles
+      <Link to={`/${slug}`} className="link">
+        <Button>
+          <FontAwesomeIcon icon="newspaper" />
+          Articles
+        </Button>
       </Link>
-    </article>
+    </StyledCard>
   );
 };
 

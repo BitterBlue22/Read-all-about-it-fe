@@ -4,7 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Loader = () => {
   return (
     <div className="loader">
-      <FontAwesomeIcon icon="spinner" rotation={270} size="6x" spin pulse />
+      <FontAwesomeIcon
+        icon="spinner"
+        rotation={270}
+        size="6x"
+        spin
+        pulse
+        color="white"
+      />
     </div>
   );
 };

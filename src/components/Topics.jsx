@@ -4,6 +4,7 @@ import TopicCards from "./TopicCards";
 import AddTopic from "./AddTopic";
 import Loader from "./Loader";
 import ErrorDisplay from "./ErrorDisplay";
+import Board from "./StyledComponents/Board";
 
 class Topics extends Component {
   state = {
@@ -17,12 +18,14 @@ class Topics extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <section className="topic-board">
+      <>
         <AddTopic addTopicToState={this.addTopicToState} />
-        {this.state.topics.map((topic) => {
-          return <TopicCards key={topic.slug} topic={topic} />;
-        })}
-      </section>
+        <Board>
+          {this.state.topics.map((topic) => {
+            return <TopicCards key={topic.slug} topic={topic} />;
+          })}
+        </Board>
+      </>
     );
   }
   componentDidMount() {
@@ -44,6 +47,7 @@ class Topics extends Component {
     this.setState((currentState) => {
       return {
         topics: [newTopic, ...currentState.topics],
+        isLoading: false,
       };
     });
   };

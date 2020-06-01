@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ErrorDisplay from "./ErrorDisplay";
+import InputBox from "./StyledComponents/InputBox";
+import Button from "./StyledComponents/Button";
+import Form from "./StyledComponents/Form";
 
 class AddComment extends Component {
   state = {
@@ -10,23 +14,29 @@ class AddComment extends Component {
     comment_id: 0,
     votes: 0,
     article_id: 0,
+
+    err: "",
   };
 
   render() {
+    const { err } = this.state;
+
+    if (err) return <ErrorDisplay msg={err} />;
     return (
-      <form className="comment-form" onSubmit={this.addNewComment}>
+      <Form className="comment-form" onSubmit={this.addNewComment}>
         <label htmlFor="comment-input-box"></label>
-        <input
+        <InputBox
           type="text"
           className="comment-input-box"
           onChange={this.handleInputChange}
           name="body"
+          required
         />
-        <button className="btn">
+        <Button className="btn">
           <FontAwesomeIcon icon="comment" />
-          comment
-        </button>
-      </form>
+          Post
+        </Button>
+      </Form>
     );
   }
 
@@ -46,9 +56,12 @@ class AddComment extends Component {
 
     const newComment = this.state;
     const article_id = this.props.article_id;
-    api.postCommentByArticleId(article_id, newComment).then((data) => {
-      this.props.addCommentToState(newComment);
-    });
+
+    api
+      .postCommentByArticleId(article_id, newComment)
+
+      .catch((err) => this.setState({ err: err.response.data.msg }));
+    this.props.addCommentToState(newComment);
   };
 }
 

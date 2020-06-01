@@ -16,7 +16,7 @@ const StyledNavButton = styled.div`
   padding: 20px;
   color: white;
   &:hover {
-    background-color: #14a098;
+    background-color: #cb2d6f;
   }
 `;
 

@@ -1,34 +1,16 @@
 import "./App.css";
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import Header from "./components/Reusable/Header";
-import NavBar from "./components/Reusable/NavBar";
 import Topics from "./components/Topics/Topics";
 import Articles from "./components/Articles/Articles";
 import Users from "./components/Users";
 import Article from "./components/Articles/Article";
 import CommentsList from "./components/Comments/CommentsList";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import styled from "styled-components";
-
-import {
-  faCheckSquare,
-  faSpinner,
-  faHome,
-  faNewspaper,
-  faUsers,
-  faBoxes,
-  faUser,
-  faClock,
-  faTrash,
-  faComment,
-  faComments,
-  faThumbsDown,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
 import Home from "./components/Reusable/Home";
 import ErrorDisplay from "./components/Reusable/ErrorDisplay";
 import MainWrapper from "./components/StyledComponents/MainWrapper";
+import PrimarySearchAppBar from "./components/Reusable/Navigation";
 
 class App extends Component {
   state = {
@@ -52,8 +34,7 @@ class App extends Component {
     `;
     return (
       <Container>
-        <Header user={this.state.user} />
-        <NavBar />
+        <PrimarySearchAppBar />
         <MainWrapper>
           <Router className="Router">
             <Home path="/" />
@@ -77,20 +58,5 @@ class App extends Component {
     );
   }
 }
-library.add(
-  faCheckSquare,
-  faSpinner,
-  faHome,
-  faNewspaper,
-  faUsers,
-  faBoxes,
-  faUser,
-  faClock,
-  faTrash,
-  faComment,
-  faComments,
-  faThumbsDown,
-  faThumbsUp
-);
 
 export default App;

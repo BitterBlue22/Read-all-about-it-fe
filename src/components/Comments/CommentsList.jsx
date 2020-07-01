@@ -4,7 +4,23 @@ import CommentCards from "./CommentCards";
 import AddComment from "./AddComment";
 import ErrorDisplay from "../Reusable/ErrorDisplay";
 import Loader from "../Reusable/Loader";
-import Board from "../StyledComponents/Board";
+import { Grid, Paper, styled } from "@material-ui/core";
+const StyledPaper = styled(Paper)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  padding: "3rem",
+  backgroundColor: "#116466",
+  boxShadow: "0px 2px 5px 2px  #2c3531",
+});
+const StyledGrid = styled(Grid)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  listStyle: "none",
+});
 
 class CommentsList extends Component {
   state = {
@@ -12,29 +28,32 @@ class CommentsList extends Component {
     isLoading: true,
     err: "",
   };
+
   render() {
     const { user } = this.props;
     const { isLoading, err } = this.state;
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <Board>
-        {this.state.comments.map((comment) => {
-          return (
-            <CommentCards
-              key={comment.comment_id}
-              comment={comment}
-              user={user}
-              removeComment={this.removeComment}
-            />
-          );
-        })}
+      <StyledGrid>
+        <StyledPaper>
+          {this.state.comments.map((comment) => {
+            return (
+              <CommentCards
+                key={comment.comment_id}
+                comment={comment}
+                user={user}
+                removeComment={this.removeComment}
+              />
+            );
+          })}
+        </StyledPaper>{" "}
         <AddComment
           article_id={this.props.article_id}
           addCommentToState={this.addCommentToState}
           user={user}
         />
-      </Board>
+      </StyledGrid>
     );
   }
 

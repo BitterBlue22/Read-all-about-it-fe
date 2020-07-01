@@ -16,6 +16,9 @@ const StyledSelection = styled.select`
 const StyledSection = styled.section`
   border: 2px groove;
   border-radius: 5px;
+  border-color: #2c3531;
+  color: white;
+  background-color: #2c3531;
   margin: 10px;
   padding: 10px;
   display: flex;

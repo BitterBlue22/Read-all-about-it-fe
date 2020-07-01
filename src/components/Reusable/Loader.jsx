@@ -1,18 +1,23 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { withStyles } from "@material-ui/core/styles";
+const styles = {
+  root: {
+    marginLeft: 5,
+  },
+};
+const SpinnerAdornment = withStyles(styles)((props) => (
+  <CircularProgress
+    className={props.classes.spinner}
+    size={100}
+    color="white"
+  />
+));
 const Loader = () => {
   return (
-    <div className="loader">
-      <FontAwesomeIcon
-        icon="spinner"
-        rotation={270}
-        size="6x"
-        spin
-        pulse
-        color="white"
-      />
-    </div>
+    <section className="loader">
+      <SpinnerAdornment />
+    </section>
   );
 };
 

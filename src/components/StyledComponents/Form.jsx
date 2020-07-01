@@ -6,15 +6,17 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
+  background-color: #116466;
   color: #black;
   border-style: ridge;
-  border: 5px;
-  border-radius: 6px;
-  border-color: cb2d6f;
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
+  margin: 2rem;
   font-family: "Montserrat", sans-serif;
+  border-color: #2c3531;
+  border-radius: 5px;
+  @media only screen and (max-width: 700px) {
+    margin: 2rem;
+  }
 `;
 
 const Form = ({ name, onSubmit, children }) => {

@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: rgb(33, 200, 192);
-  color: black;
+  background-color: #2c3531;
+  color: white;
   padding: 5px;
   margin: 5px;
   display: flex;
@@ -11,11 +11,15 @@ const StyledButton = styled.button`
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
+  border-type: groove;
   font-family: "Montserrat", sans-serif;
-
+  min-width: 5rem;
   &:hover {
-    left: 7px;
-    background-color: #cb2d6f;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+
+    background-color: #116466;
   }
 `;
 

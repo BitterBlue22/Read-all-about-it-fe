@@ -4,6 +4,8 @@ import ErrorDisplay from "../Reusable/ErrorDisplay";
 import InputBox from "../StyledComponents/InputBox";
 import Button from "../StyledComponents/Button";
 import Form from "../StyledComponents/Form";
+import TextArea from "../StyledComponents/TextArea";
+import HeadingGeneral from "../StyledComponents/HeadingGeneral";
 
 class AddArticle extends Component {
   state = {
@@ -23,6 +25,7 @@ class AddArticle extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     return (
       <Form className="article-form" onSubmit={this.addNewArticle}>
+        <HeadingGeneral>Create new article</HeadingGeneral>
         <label htmlFor="article-input-box">Topic: </label>
         <InputBox
           type="text"
@@ -39,15 +42,15 @@ class AddArticle extends Component {
           name="title"
           required
         />
-        <label htmlFor="article-input-box-big">Article: </label>
-        <InputBox
+        <label htmlFor="article-input-box-big">Body: </label>
+        <TextArea
           type="text"
           className="article-input-box-big"
           onChange={this.handleInputChange}
           name="body"
           required
         />
-        <Button className="btn">Post</Button>
+        <Button name="post-btn">Post</Button>
       </Form>
     );
   }

@@ -4,8 +4,28 @@ import TopicCards from "./TopicCards";
 import AddTopic from "./AddTopic";
 import Loader from "../Reusable/Loader";
 import ErrorDisplay from "../Reusable/ErrorDisplay";
-import Board from "../StyledComponents/Board";
+import { Grid, GridListTile, styled, Paper } from "@material-ui/core";
 
+const StyledGrid = styled(Grid)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  listStyle: "none",
+});
+const StyledTile = styled(GridListTile)({
+  maxWidth: "90%",
+  minWidth: "80%",
+});
+const StyledPaper = styled(Paper)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  padding: "3rem",
+
+  backgroundColor: "#2c3531",
+});
 class Topics extends Component {
   state = {
     topics: [],
@@ -18,14 +38,17 @@ class Topics extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <>
+      <StyledGrid>
+        <StyledPaper>
+          <StyledTile>
+            {this.state.topics.map((topic) => {
+              return <TopicCards key={topic.slug} topic={topic} />;
+            })}
+          </StyledTile>
+        </StyledPaper>
+
         <AddTopic addTopicToState={this.addTopicToState} />
-        <Board>
-          {this.state.topics.map((topic) => {
-            return <TopicCards key={topic.slug} topic={topic} />;
-          })}
-        </Board>
-      </>
+      </StyledGrid>
     );
   }
   componentDidMount() {

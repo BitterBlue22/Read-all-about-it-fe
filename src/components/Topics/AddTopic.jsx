@@ -9,19 +9,18 @@ class AddTopic extends Component {
   state = {
     slug: "",
     description: "",
-
     err: "",
   };
   render() {
     const { err } = this.state;
-
     if (err) return <ErrorDisplay msg={err} />;
     return (
-      <Form className="topic-form" onSubmit={this.addNewTopic}>
+      <Form onSubmit={this.addNewTopic}>
         <label>New Topic:</label>
         <InputBox
           type="text"
           name="slug"
+          size="medium"
           onChange={this.handleInputChange}
           required
         />
@@ -30,9 +29,10 @@ class AddTopic extends Component {
           type="text"
           name="description"
           onChange={this.handleInputChange}
+          size="big"
           required
         />
-        <Button>Post</Button>
+        <Button name="post-btn">Post</Button>
       </Form>
     );
   }

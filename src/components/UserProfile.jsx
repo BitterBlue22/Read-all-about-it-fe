@@ -1,5 +1,4 @@
 import React from "react";
-import StyledCard from "./StyledComponents/StyledCard";
 import HeadingGeneral from "./StyledComponents/HeadingGeneral";
 import { Grid, styled, Paper, GridListTile, Box } from "@material-ui/core";
 

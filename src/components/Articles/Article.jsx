@@ -21,7 +21,7 @@ const StyledPaper = styled(Paper)({
   alignItems: "center",
   padding: "3rem",
 
-  backgroundColor: "#116466",
+  backgroundColor: "#2c3531",
   boxShadow: "0px 2px 5px 2px  #2c3531",
 });
 const StyledBox = styled(Box)({
@@ -30,7 +30,7 @@ const StyledBox = styled(Box)({
   justifyContent: "space-around",
   alignItems: "center",
   padding: "3rem",
-  backgroundColor: "#ffcb9a",
+  backgroundColor: "white",
   boxShadow: "0px 2px 5px 2px  #2c3531",
 });
 

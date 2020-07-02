@@ -38,7 +38,7 @@ class App extends Component {
         <PrimarySearchAppBar />
 
         <Router className="Router">
-          <Home path="/" />
+          <Topics path="/" />
           <Topics path="/topics" user={this.state.user.username} />
           <Articles path="/articles" user={this.state.user.username} />
           <Article

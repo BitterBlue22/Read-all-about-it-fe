@@ -25,6 +25,7 @@ const StyledPaper = styled(Paper)({
   alignItems: "center",
   padding: "3rem",
   backgroundColor: "#2c3531",
+  margin: "2rem",
 });
 
 class Topics extends Component {
@@ -40,10 +41,10 @@ class Topics extends Component {
     if (isLoading) return <Loader />;
     return (
       <StyledGrid>
-        <Link to="/add-topic">
-          <Button className="add-topic">New Topic</Button>
-        </Link>
         <StyledPaper>
+          <Link to="/add-topic">
+            <Button className="add-topic">New Topic</Button>
+          </Link>
           <StyledTile>
             {this.state.topics.map((topic) => {
               return <TopicCards key={topic.slug} topic={topic} />;

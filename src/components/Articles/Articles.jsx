@@ -25,6 +25,7 @@ const StyledPaper = styled(Paper)({
   padding: "3rem",
   backgroundColor: "#2c3531",
   boxShadow: "0px 2px 5px 2px  #2c3531",
+  margin: "2rem",
 });
 
 class Articles extends Component {

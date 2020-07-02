@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   border-type: groove;
   font-family: "Montserrat", sans-serif;
   min-width: 5rem;
+  max-width: 6rem;
   &:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);

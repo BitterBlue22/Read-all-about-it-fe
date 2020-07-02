@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-
 import Button from "../StyledComponents/Button";
 import HeadingGeneral from "../StyledComponents/HeadingGeneral";
 import StyledCard from "../StyledComponents/StyledCard";

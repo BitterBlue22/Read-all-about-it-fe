@@ -15,7 +15,7 @@ class AddTopic extends Component {
     const { err } = this.state;
     if (err) return <ErrorDisplay msg={err} />;
     return (
-      <Form onSubmit={this.addNewTopic}>
+      <Form>
         <label>New Topic:</label>
         <InputBox
           type="text"
@@ -32,7 +32,9 @@ class AddTopic extends Component {
           size="big"
           required
         />
-        <Button name="post-btn">Post</Button>
+        <Button name="post-btn" onClick={this.addNewTopic}>
+          Post
+        </Button>
       </Form>
     );
   }
@@ -49,8 +51,9 @@ class AddTopic extends Component {
     const newTopic = this.state;
     api
       .postNewTopic(newTopic)
+
       .catch((err) => this.setState({ err: err.response.data.msg }));
-    this.props.addTopicToState(newTopic);
+    this.setState({ slug: "", description: "", err: "" });
   };
 }
 

@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 import Home from "./Home";
 import Topics from "../Topics/Topics";
 import Articles from "../Articles/Articles";
+import Users from "../Users";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -220,13 +221,14 @@ export default function PrimarySearchAppBar() {
             variant="fullWidth"
             value={value}
             onChange={handleChange}
-            aria-label="nav tabs example"
+            aria-label="nav tabs"
           >
             <Tab label="Home" href="/" {...a11yProps(0)} />
 
             <Tab label="Topics" href="/topics" {...a11yProps(1)} />
 
             <Tab label="Articles" href="/articles" {...a11yProps(2)} />
+            <Tab label="Users" href="/users" {...a11yProps(3)} />
           </Tabs>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -251,6 +253,9 @@ export default function PrimarySearchAppBar() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Articles />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Users />
       </TabPanel>
       {renderMobileMenu}
       {renderMenu}

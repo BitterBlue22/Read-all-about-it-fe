@@ -10,7 +10,7 @@ const SpinnerAdornment = withStyles(styles)((props) => (
   <CircularProgress
     className={props.classes.spinner}
     size={100}
-    color="white"
+    color="inherit"
   />
 ));
 const Loader = () => {

@@ -8,12 +8,12 @@ const StyledSection = styled.section`
   background-color: transparent;
   display: flex;
   justify-content: space-around;
-  alignt-items: center;
+  align-items: center;
 `;
 const Home = () => {
   return (
     <StyledSection>
-      <WelcomeMessage>Welcome to NC news!</WelcomeMessage>
+      <WelcomeMessage>Read all about it!</WelcomeMessage>
     </StyledSection>
   );
 };

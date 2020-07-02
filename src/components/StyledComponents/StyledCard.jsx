@@ -4,15 +4,17 @@ import styled from "styled-components";
 const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border: 3px;
   border-style: outset;
   border-color: #d9b08c;
   border-radius: 3px;
-  padding: 10px;
-  margin: 5px;
-  background-color: #ffcb9a;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: white;
   font-family: "Montserrat", sans-serif;
+
   &:hover {
     border-color: #ffcb9a;
     transition: all 500ms ease;

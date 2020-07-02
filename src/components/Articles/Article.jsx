@@ -20,7 +20,7 @@ const StyledPaper = styled(Paper)({
   justifyContent: "space-around",
   alignItems: "center",
   padding: "3rem",
-
+  margin: "3rem",
   backgroundColor: "#2c3531",
   boxShadow: "0px 2px 5px 2px  #2c3531",
 });

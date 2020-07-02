@@ -4,6 +4,7 @@
 
 This is the front-end for a Reddit-inspired news app, allowing users to write articles for different topics and comment on them.
 
+- See the [hosted](https://tel-nc-news.netlify.app) version
 - See the [Backend](https://github.com/BitterBlue22/Read-all-about-it-be)
 
 ## Getting Started

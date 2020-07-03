@@ -34,7 +34,7 @@ class Topics extends Component {
     isLoading: true,
     err: "",
   };
-  _isMounted = false;
+
   render() {
     const { isLoading, err } = this.state;
     if (err) return <ErrorDisplay msg={err} />;
@@ -55,31 +55,19 @@ class Topics extends Component {
     );
   }
   componentDidMount() {
-    this._isMounted = true;
     this.getAllTopics();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.topics !== this.state.topics) {
-      this.getAllTopics();
-    }
-  }
   getAllTopics = () => {
     api
       .fetchAllTopics()
       .then((topics) => {
-        if (this._isMounted) {
-          this.setState({ topics, isLoading: false });
-        }
+        this.setState({ topics, isLoading: false });
       })
       .catch((err) => {
         this.setState({ err: err.response.data.msg, isLoading: false });
       });
   };
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
 }
 
 export default Topics;

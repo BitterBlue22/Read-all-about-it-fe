@@ -1,21 +1,20 @@
-/* font-family: 'Montserrat', sans-serif;
-font-family: 'Permanent Marker', cursive; */
-
-/* #501F3A - items
-#CB2D6F - pop
-#CCCCCC - white
-#14A098 - accent
-#1A1A1D - background */
 /*APPLICATION*/
 p {
   font-family: "Montserrat", sans-serif;
 }
-html {
-  scroll-behavior: smooth;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  padding: 5px;
+  margin: 0;
+  background-color: #2c3531;
+  box-shadow: "0px";
 }
 body {
   margin: 0;
-  height: 100%;
+  background-color: #116466;
 }
 .App {
   text-align: center;
@@ -23,12 +22,25 @@ body {
 .link {
   text-decoration: none;
 }
+.icon {
+  margin-top: 5px;
+  margin-right: 5px;
+}
 .user-avatar {
   height: 100px;
   width: 80px;
   border-radius: 20px;
   border-style: outset;
   border-color: #cccccc;
+}
+
+.user-avatar-login {
+  height: 50px;
+  width: 40px;
+  border-radius: 20px;
+  border-style: outset;
+  border-color: #cccccc;
+  margin: 10px;
 }
 
 /* NAVIGATION*/
@@ -82,16 +94,20 @@ body {
 }
 
 /*COMMENTS*/
-
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .comment-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   background-color: white;
   border: 4px;
   border-style: ridge;
   border-color: darkslategray;
-  margin: 40px;
+  margin: 10px 50px 10px 50px;
   padding: 20px;
 }
 
@@ -101,4 +117,8 @@ body {
   align-items: center;
   padding: 50px;
   margin: 50px;
+}
+
+/*RESPONSIVENESS*/
+@media only screen and (max-width: 500px) {
 }

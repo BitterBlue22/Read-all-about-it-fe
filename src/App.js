@@ -7,7 +7,6 @@ import Users from "./components/Users";
 import Article from "./components/Articles/Article";
 import CommentsList from "./components/Comments/CommentsList";
 import styled from "styled-components";
-import Home from "./components/Reusable/Home";
 import ErrorDisplay from "./components/Reusable/ErrorDisplay";
 
 import PrimarySearchAppBar from "./components/Reusable/Navigation";

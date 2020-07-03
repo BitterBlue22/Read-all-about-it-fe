@@ -42,7 +42,7 @@ class Topics extends Component {
     return (
       <StyledGrid>
         <StyledPaper>
-          <Link to="/add-topic">
+          <Link to="/add-topic" className="link">
             <Button className="add-topic">New Topic</Button>
           </Link>
           <StyledTile>

@@ -25,7 +25,6 @@ const StyledTypography = styled(Typography)({
   margin: "2px",
   padding: "0 5% 0 0",
   fontFamily: "Permanent Marker",
-  fontSize: "large",
 });
 
 const StyledAppBar = styled(AppBar)({
@@ -37,10 +36,8 @@ export default function PrimarySearchAppBar() {
 
   return (
     <section className={classes.grow}>
-      <header>
-        <StyledTypography>Read all about it!</StyledTypography>
-      </header>
       <StyledAppBar position="static">
+        <StyledTypography>Read all about it!</StyledTypography>
         <nav variant="fullWidth" aria-label="nav tabs">
           <Tab label="Topics" href="/topics" value={0} />
           <Tab label="Articles" href="/articles" value={1} />

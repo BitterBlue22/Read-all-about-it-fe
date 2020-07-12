@@ -1,8 +1,5 @@
 import React from "react";
-import { makeStyles, styled } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import { Tab } from "@material-ui/core";
+import { Tab, Typography, makeStyles, styled, AppBar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,23 +9,25 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
+  tab: {
+    fontFamily: "IM Fell DW Pica SC",
+    color: "#e4c49b",
+    fontSize: "large",
   },
 }));
 
 const StyledTypography = styled(Typography)({
   margin: "2px",
   padding: "0 5% 0 0",
-  fontFamily: "Permanent Marker",
+  fontSize: "xx-large",
+  color: "#ccbda4",
+  fontFamily: "UnifrakturCook",
+  textAlign: "center",
 });
 
 const StyledAppBar = styled(AppBar)({
-  backgroundColor: "#2c3531",
+  backgroundColor: "#1c1308",
+  marginBottom: "1rem",
 });
 
 export default function PrimarySearchAppBar() {
@@ -37,13 +36,23 @@ export default function PrimarySearchAppBar() {
   return (
     <section className={classes.grow}>
       <StyledAppBar position="static">
-        <StyledTypography>Read all about it!</StyledTypography>
         <nav variant="fullWidth" aria-label="nav tabs">
-          <Tab label="Topics" href="/topics" value={0} />
-          <Tab label="Articles" href="/articles" value={1} />
-          <Tab label="Users" href="/users" value={2} />
+          <StyledTypography>Read all about it!</StyledTypography>
+          <Tab
+            label="Topics"
+            href="/topics"
+            value={0}
+            className={classes.tab}
+          />
+          <Tab
+            label="Articles"
+            href="/articles"
+            value={1}
+            className={classes.tab}
+          />
+          <Tab label="Users" href="/users" value={2} className={classes.tab} />
         </nav>
-      </StyledAppBar>{" "}
+      </StyledAppBar>
     </section>
   );
 }

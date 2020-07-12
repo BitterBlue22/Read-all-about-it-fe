@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import TopicCards from "./TopicCards";
 import Loader from "../Reusable/Loader";
 import ErrorDisplay from "../Reusable/ErrorDisplay";
-import { Grid, GridListTile, styled, Paper } from "@material-ui/core";
+import { styled, Paper, Box } from "@material-ui/core";
 import { Link } from "@reach/router";
-import Button from "../StyledComponents/Button";
-
-const StyledGrid = styled(Grid)({
+import OutlinedCard from "./CardTopic";
+import StyledButton from "../StyledComponents/Button";
+const StyledBox = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-around",
+  justifyContent: "center",
   alignItems: "center",
-  listStyle: "none",
+  flexWrap: "wrap",
+  margin: "1rem",
 });
-const StyledTile = styled(GridListTile)({
-  maxWidth: "90%",
-  minWidth: "80%",
-});
+
 const StyledPaper = styled(Paper)({
   display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-around",
+  flexDirection: "row",
+  justifyContent: "center",
   alignItems: "center",
-  padding: "3rem",
-  backgroundColor: "#2c3531",
-  margin: "2rem",
+  padding: "0.5rem",
+  backgroundColor: "#1c1308",
+  margin: "0.5rem",
+  flexWrap: "wrap",
+  maxWidth: "90%",
 });
 
 class Topics extends Component {
@@ -40,18 +39,16 @@ class Topics extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     if (isLoading) return <Loader />;
     return (
-      <StyledGrid>
+      <StyledBox>
+        <Link to="/add-topic" className="link">
+          <StyledButton className="add-topic">New Topic</StyledButton>
+        </Link>
         <StyledPaper>
-          <Link to="/add-topic" className="link">
-            <Button className="add-topic">New Topic</Button>
-          </Link>
-          <StyledTile>
-            {this.state.topics.map((topic) => {
-              return <TopicCards key={topic.slug} topic={topic} />;
-            })}
-          </StyledTile>
+          {this.state.topics.map((topic) => {
+            return <OutlinedCard key={topic.slug} topic={topic} />;
+          })}
         </StyledPaper>
-      </StyledGrid>
+      </StyledBox>
     );
   }
   componentDidMount() {

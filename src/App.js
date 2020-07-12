@@ -8,7 +8,7 @@ import Article from "./components/Articles/Article";
 import CommentsList from "./components/Comments/CommentsList";
 import styled from "styled-components";
 import ErrorDisplay from "./components/Reusable/ErrorDisplay";
-
+import PerfectScrollbar from "react-perfect-scrollbar";
 import PrimarySearchAppBar from "./components/Reusable/Navigation";
 import AddTopic from "./components/Topics/AddTopic";
 
@@ -35,25 +35,26 @@ class App extends Component {
     return (
       <Container>
         <PrimarySearchAppBar />
-
-        <Router className="Router">
-          <Topics path="/" />
-          <Topics path="/topics" user={this.state.user.username} />
-          <Articles path="/articles" user={this.state.user.username} />
-          <Article
-            path="/articles/:article_id"
-            user={this.state.user.username}
-          />
-          <Articles path="/articles/:article_id/comments" />
-          <Users path="/users" />
-          <Articles path="/:topic_slug" />
-          <CommentsList
-            path="/comments/:comment_id"
-            user={this.state.user.username}
-          />
-          <AddTopic path="/add-topic" />
-          <ErrorDisplay default />
-        </Router>
+        <PerfectScrollbar>
+          <Router className="Router">
+            <Topics path="/" />
+            <Topics path="/topics" user={this.state.user.username} />
+            <Articles path="/articles" user={this.state.user.username} />
+            <Article
+              path="/articles/:article_id"
+              user={this.state.user.username}
+            />
+            <Articles path="/articles/:article_id/comments" />
+            <Users path="/users" />
+            <Articles path="/:topic_slug" />
+            <CommentsList
+              path="/comments/:comment_id"
+              user={this.state.user.username}
+            />
+            <AddTopic path="/add-topic" />
+            <ErrorDisplay default />
+          </Router>
+        </PerfectScrollbar>
       </Container>
     );
   }

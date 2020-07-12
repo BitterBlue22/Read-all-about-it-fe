@@ -1,31 +1,32 @@
 import React, { Component } from "react";
-import ArticleCards from "./ArticleCards";
 import * as api from "../../utils/api";
 import Loader from "../Reusable/Loader";
 import ErrorDisplay from "../Reusable/ErrorDisplay";
 import Sorter from "../Reusable/Sorter";
 import AddArticle from "./AddArticle";
-import { Grid, GridListTile, styled, Paper } from "@material-ui/core";
+import { Grid, styled, Paper } from "@material-ui/core";
+import OutlinedCard from "./CardArticles";
 const StyledGrid = styled(Grid)({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-around",
+  justifyContent: "center",
   alignItems: "center",
   listStyle: "none",
 });
-const StyledTile = styled(GridListTile)({
-  maxWidth: "90%",
-  minWidth: "80%",
-});
+
 const StyledPaper = styled(Paper)({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-around",
+  justifyContent: "center",
   alignItems: "center",
-  padding: "3rem",
-  backgroundColor: "#2c3531",
-  boxShadow: "0px 2px 5px 2px  #2c3531",
-  margin: "2rem",
+  flexWrap: "wrap",
+  padding: "1rem",
+  backgroundColor: "#625434",
+  boxShadow: "0px 2px 5px 2px  #1c1308",
+  margin: "1rem",
+
+  borderStyle: "outline",
+  borderRadius: "0px",
 });
 
 class Articles extends Component {
@@ -41,25 +42,17 @@ class Articles extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     return (
       <StyledGrid>
+        <Sorter handleSort={this.handleSort} />
         <StyledPaper>
-          <GridListTile>
-            <Sorter handleSort={this.handleSort} />
-          </GridListTile>
-          <StyledTile>
-            {this.state.articles.map((article) => {
-              return (
-                <ArticleCards key={article.article_id} article={article} />
-              );
-            })}
-          </StyledTile>
+          {this.state.articles.map((article) => {
+            return <OutlinedCard key={article.article_id} article={article} />;
+          })}
         </StyledPaper>
 
-        <GridListTile>
-          <AddArticle
-            addArticleToState={this.addArticleToState}
-            user={this.props.user}
-          />
-        </GridListTile>
+        <AddArticle
+          addArticleToState={this.addArticleToState}
+          user={this.props.user}
+        />
       </StyledGrid>
     );
   }

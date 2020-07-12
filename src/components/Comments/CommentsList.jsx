@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import CommentCards from "./CommentCards";
 import AddComment from "./AddComment";
 import ErrorDisplay from "../Reusable/ErrorDisplay";
 import Loader from "../Reusable/Loader";
 import { Grid, Paper, styled } from "@material-ui/core";
+import OutlinedCard from "./CardComment";
 const StyledPaper = styled(Paper)({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-around",
-  alignItems: "center",
-  padding: "3rem",
-  backgroundColor: "#116466",
-  boxShadow: "0px 2px 5px 2px  #2c3531",
+  justifyContent: "center",
+
+  backgroundColor: "#625434",
+  boxShadow: "0px 2px 5px 2px  #1c1308",
+  maxWidth: "80%",
 });
 const StyledGrid = styled(Grid)({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-around",
+  justifyContent: "center",
   alignItems: "center",
   listStyle: "none",
 });
@@ -39,7 +39,7 @@ class CommentsList extends Component {
         <StyledPaper>
           {this.state.comments.map((comment) => {
             return (
-              <CommentCards
+              <OutlinedCard
                 key={comment.comment_id}
                 comment={comment}
                 user={user}

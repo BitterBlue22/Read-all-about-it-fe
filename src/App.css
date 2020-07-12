@@ -1,6 +1,6 @@
 /*APPLICATION*/
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "IM Fell DW Pica SC", serif;
 }
 header {
   display: flex;
@@ -12,9 +12,12 @@ header {
   background-color: #2c3531;
   box-shadow: "0px";
 }
+html,
 body {
   margin: 0;
-  background-color: #116466;
+  background: radial-gradient(#c3a57a, #625434);
+  min-width: 100%;
+  min-height: 100%;
 }
 .App {
   text-align: center;
@@ -121,4 +124,19 @@ body {
 
 /*RESPONSIVENESS*/
 @media only screen and (max-width: 500px) {
+}
+
+h1 {
+  font-family: "UnifrakturCook", cursive;
+}
+h3 {
+  font-family: "IM Fell DW Pica SC", serif;
+  font-family: "Cutive Mono", monospace;
+}
+
+.vote-button {
+  background-color: #1c1308;
+  color: #e4c49b;
+  padding: 5px;
+  margin: 5px;
 }

@@ -23,15 +23,16 @@ class AddComment extends Component {
     if (err) return <ErrorDisplay msg={err} />;
     return (
       <Form className="comment-form">
-        <label htmlFor="comment-input-box"></label>
-        <TextArea
-          type="text"
-          className="comment-input-box"
-          onChange={this.handleInputChange}
-          name="body"
-          size="big"
-          required
-        />
+        <label htmlFor="comment-input-box">
+          <TextArea
+            type="text"
+            className="comment-input-box"
+            onChange={this.handleInputChange}
+            name="body"
+            size="big"
+            required
+          />
+        </label>
         <Button name="post-btn" onClick={this.addNewComment}>
           Post
         </Button>

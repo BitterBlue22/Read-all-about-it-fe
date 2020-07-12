@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 class VoteUpdater extends Component {
   state = {
     userVotes: 0,
@@ -45,18 +46,20 @@ class VoteUpdater extends Component {
           onClick={this.handleVoteUpdate}
           disabled={this.state.userVotes > 0}
           id="upvote"
+          className="vote-button"
         >
           <span role="img" aria-label="upvote" id="upvote">
-            ⬆️
+            <KeyboardArrowUpIcon id="upvote" />
           </span>
         </button>
         <button
           onClick={this.handleVoteUpdate}
           id="downvote"
           disabled={this.state.userVotes < 0}
+          className="vote-button"
         >
           <span role="img" aria-label="downvote" id="downvote">
-            ⬇️
+            <KeyboardArrowDownIcon id="downvote" />
           </span>
         </button>
       </section>

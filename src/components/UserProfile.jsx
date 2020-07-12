@@ -5,15 +5,15 @@ import { Grid, styled, Paper, GridListTile, Box } from "@material-ui/core";
 const StyledPaper = styled(Paper)({
   padding: "1rem",
   maxWidth: "60%",
-  backgroundColor: "#2c3531",
-  boxShadow: "0px 2px 5px 2px  #2c3531",
+  backgroundColor: "#a48454",
+  boxShadow: "0px 2px 5px 2px  #1c1308",
   margin: "1rem",
   minWidth: "50%",
 });
 const StyledGridListTile = styled(GridListTile)({
   padding: "1rem",
-  backgroundColor: "white",
-  boxShadow: "0px 2px 5px 2px  #2c3531",
+  backgroundColor: "#1c1308",
+  boxShadow: "0px 2px 5px 2px #625434",
   display: "flex",
   justifyContent: "center",
   listStyle: "none",
